@@ -20,7 +20,7 @@ const totalTwo = document.querySelector(".totalTwo");
 
 var callTotal = 0;
 var smsTotal = 0;
-var total = 0;
+var theTotal = 0;
 
 function radioBillTotal(){
 
@@ -40,23 +40,23 @@ var billItemInserted = checkedBtn.value;
      callTotalTwo.innerHTML= callTotal.toFixed(2);
      smsTotalTwo.innerHTML= smsTotal.toFixed(2);
    
-    total = callTotal + smsTotal;
-    totalTwo.innerHTML= total.toFixed(2);
-    radioBillTotalColor(total);
+    theTotal = callTotal + smsTotal;
+    totalTwo.innerHTML= theTotal.toFixed(2);
+    radioBillTotalColor(theTotal);
 };
-function radioBillTotalColor(total){
+function radioBillTotalColor(theTotal){
   
 
     totalTwo.classList.remove("danger");
 
     totalTwo.classList.remove("warning");
 
-    if (total >= 50){
+    if (theTotal >= 50){
      
       totalTwo.classList.add("danger");
 
 }
-   else if (total >= 30){
+   else if (theTotal >= 30){
      
      totalTwo.classList.add("warning");
 }
