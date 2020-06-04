@@ -22,8 +22,8 @@ const smsTotalElem = document.querySelector(".smsTotalOne");
 
 const totalCostElem = document.querySelector(".totalOne");
 
-var callsTotal = 0
-var smsTotal = 0
+var textBillCallsTotal = 0
+var textBillSmsTotal = 0
 
 function textBillTotal()  {
 
@@ -32,19 +32,19 @@ function textBillTotal()  {
 if (billTypeEntered === "call"){
     //dot not coma 2.75
 
-callsTotal += 2.75;
+textBillCallsTotal += 2.75;
 }
 
 else if (billTypeEntered === "sms"){
   //dot not coma 0.65
-smsTotal += 0.65;
+textBillSmsTotal += 0.65;
 };
 
-callsTotalElem.innerHTML = callsTotal.toFixed(2);
+callsTotalElem.innerHTML = textBillCallsTotal.toFixed(2);
 
-smsTotalElem.innerHTML = smsTotal.toFixed(2);
+smsTotalElem.innerHTML = textBillSmsTotal.toFixed(2);
 
-var totalCost = callsTotal + smsTotal;
+var totalCost = textBillCallsTotal + textBillSmsTotal;
 totalCostElem.innerHTML = totalCost.toFixed(2);
 
 textBillTotalColor(totalCost);
