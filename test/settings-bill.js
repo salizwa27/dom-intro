@@ -29,7 +29,7 @@ function BillWithSettings() {
     }
     
     function getWarningLevel(){
-        return warningLevel;
+        return theWarningLevel;
     }
 
     function setCriticalLevel(criticalLevel){
@@ -69,8 +69,12 @@ function BillWithSettings() {
         }
     }
 
-    function hasReachedCriticalLevel () {
+    function hasReachedCriticalLevel() {
        return getTotalCost() >= getCriticalLevel()
+    }
+
+    function warningLevel() {
+        return getTotalCost() >= getWarningLevel()
     }
 
     function totalClassName(){
@@ -98,6 +102,7 @@ function BillWithSettings() {
         getTotalCallCost,
         getTotalSmsCost,
         sendSms,
-        totalClassName
+        totalClassName,
+        warningLevel
     }
 }
