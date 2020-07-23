@@ -12,7 +12,6 @@
 
 //link the function to a click event on the calculate button
 
-
 const calculateBtn = document.querySelector(".calculateBtn");
 const billTotalElement = document.querySelector(".billTotal");
 const billStringTotalElement = document.querySelector(".billString");
@@ -20,48 +19,21 @@ const billTotalSpanElement = document.querySelector(".total");
 
 var calculateBillInstantiate = calculateBill()
 
-/*function totalPhoneBill(billString) {
-
-
-  var billList = billString.split(",");
-  var billTotal = 0;
-
-
-  for (var i = 0; i < billList.length; i++) {
-
-    var billCost = billList[i].trim();
-    if (billCost === "call") {
-      billTotal += 2.75;
-    }
-
-    else if (billCost === "sms") {
-      billTotal += 0.75;
-    }
-  }
-  var roundedTotal = billTotal.toFixed(2);
-  return roundedTotal;
-};*/
-
-
-
 function phoneBillColor(roundedTotal) {
 
   const theTotal = Number(roundedTotal);
 
   billTotalSpanElement.classList.remove("warning");
   billTotalSpanElement.classList.remove("critical");
-alert(calculateBillInstantiate.totalShowClassName())
-  billTotalSpanElement.classList.add(calculateBillInstantiate.totalShowClassName());
+  billTotalSpanElement.classList.add(calculateBillInstantiate.totalShowClassName(theTotal));
 
 
 };
 
-
 function calculateBtnClicked() {
-  var billString = billStringTotalElement.value;
+  let billString = billStringTotalElement.value;
 
   const roundedTotal = calculateBillInstantiate.action(billString);
-  //alert(roundedTotal)
   billTotalElement.innerHTML = roundedTotal;
   phoneBillColor(roundedTotal);
 

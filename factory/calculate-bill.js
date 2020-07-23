@@ -1,9 +1,5 @@
 function calculateBill() {
 
-  //var callTotal2 = 0;
-  //var smsTotal2 = 0;
-  //var theeTotal2 = 0;
-
   var roundedTotal = 0
 
   function action(billString) {
@@ -30,13 +26,12 @@ function calculateBill() {
 
   }
 
-function totalShowClassName() {
-
-    if (action(roundedTotal) >= 50) {
+function totalShowClassName(roundedTotal) {
+    if (Number(roundedTotal) >= 50) {
       return "critical"
     }
 
-   else if (action(roundedTotal) >= 30) {
+   else if (Number(roundedTotal) >= 30) {
       return "warning"
     }
   }
