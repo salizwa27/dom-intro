@@ -22,45 +22,35 @@ const smsTotalElem = document.querySelector(".smsTotalOne");
 
 const totalCostElem = document.querySelector(".totalOne");
 
-var textBillCallsTotal = 0
-var textBillSmsTotal = 0
+const textBillInstantiate = textBill()
 
-function textBillTotal()  {
+function textBillTotal() {
 
-  var billTypeEntered = billTypeText.value; 
-  
-if (billTypeEntered === "call"){
-    //dot not coma 2.75
+  var billTypeEntered = billTypeText.value;
 
-textBillCallsTotal += 2.75;
-}
+  textBillInstantiate.textBillTotal(billTypeEntered)
 
-else if (billTypeEntered === "sms"){
-  //dot not coma 0.65
-textBillSmsTotal += 0.65;
+
+
+  callsTotalElem.innerHTML = textBillInstantiate.getTotalCalls().toFixed(2);
+
+  smsTotalElem.innerHTML = textBillInstantiate.getTotalSms().toFixed(2);
+
+
+  totalCostElem.innerHTML = textBillInstantiate.getOverallTotal().toFixed(2);
+
+  textBillTotalColor(textBillInstantiate.getOverallTotal());
 };
 
-callsTotalElem.innerHTML = textBillCallsTotal.toFixed(2);
+function textBillTotalColor(totalCost) {
 
-smsTotalElem.innerHTML = textBillSmsTotal.toFixed(2);
+  totalCostElem.classList.remove("critical");
+  totalCostElem.classList.remove("warning");
+  totalCostElem.classList.add(textBillInstantiate.totalClassName());
 
-var totalCost = textBillCallsTotal + textBillSmsTotal;
-totalCostElem.innerHTML = totalCost.toFixed(2);
 
-textBillTotalColor(totalCost);
 };
+textTotalAddBtn.addEventListener("click", textBillTotal);
 
-function textBillTotalColor(totalCost){
 
-totalCostElem.classList.remove("danger");
-totalCostElem.classList.remove("warning");
 
-if (totalCost >= 50){
-totalCostElem.classList.add("danger");
-}
-
-else if (totalCost >= 30){
-totalCostElem.classList.add("warning");
-};
-};
- textTotalAddBtn.addEventListener("click", textBillTotal);

@@ -6,17 +6,14 @@ function textBill (){
 
 
     function textBillTotal(billTypeEntered)  {
-
-     //   var billTypeEntered = billTypeText.value; 
         
       if (billTypeEntered === "call"){
-          //dot not coma 2.75
-      
+
       textBillCallsTotal += 2.75;
       }
       
       else if (billTypeEntered === "sms"){
-        //dot not coma 0.65
+      
       textBillSmsTotal += 0.65;
       };
     }

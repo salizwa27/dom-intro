@@ -1,6 +1,6 @@
-// get a reference to the sms or call radio buttons
+//get a reference to the sms or call radio buttons
 
-// get refences to all the settings fields
+// get refences to all the settings fields 
 
 //get a reference to the add button
 
@@ -21,7 +21,7 @@
 // * display the latest total on the screen.
 // * check the value thresholds and display the total value in the right color.
 
-// const billItemTypeWithSettings = document.querySelector(".billItemTypeWithSettings");
+
 const radioBillAddBtnElem = document.querySelector(".radioBillAddBtn")
 const callTotalSettings = document.querySelector(".callTotalSettings");
 const smsTotalSettings = document.querySelector(".smsTotalSettings");
@@ -33,68 +33,61 @@ const criticalLevelSetting = document.querySelector(".criticalLevelSetting");
 const updateSettingsElem = document.querySelector(".updateSettings");
 const addBtnElem = document.querySelector(".addBtn")
 
-var callTotal = 0;
-var smsTotal = 0;
-var total = 0;
+//var callTotal = 0;
+//var smsTotal = 0;
+//var total = 0;
 
-var call = 0;
-var sms = 0;
-var warning = 0;
-var critical = 0;
+//var call = 0;
+//var sms = 0;
+//var warning = 0;
+//var critical = 0;
 
+var billTypeWithSettingsInstantiate = BillWithSettings()
 
 function updateSettings() {
-  call = Number(callCostSetting.value);
-  sms = Number(smsCostSetting.value);
-  warning = Number(warningLevelSetting.value)
-  critical = Number(criticalLevelSetting.value);
-  billTypeWithSettingsColor(total);
+  billTypeWithSettingsInstantiate.setCallCost(Number(callCostSetting.value));
+  // alert(billTypeWithSettingsInstantiate.getCallCost())
+  billTypeWithSettingsInstantiate.setSmsCost(Number(smsCostSetting.value));
+  billTypeWithSettingsInstantiate.setWarningLevel(Number(warningLevelSetting.value));
+  billTypeWithSettingsInstantiate.setCriticalLevel(Number(criticalLevelSetting.value));
+
+  billTypeWithSettingsColor();
 }
 
 function billTypeWithSettings() {
 
   var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
 
-  if (total < critical) {
+  
     if (checkedRadioBtn) {
       var billRadio = checkedRadioBtn.value;
    
       if (billRadio === 'call') {
-        callTotal += call;
+        billTypeWithSettingsInstantiate.makeCall();
       }
 
       else if (billRadio === 'sms') {
-        smsTotal += sms;
+        billTypeWithSettingsInstantiate.sendSms();
       }
     }
-  }
+  
 
-  callTotalSettings.innerHTML = callTotal.toFixed(2);
-  smsTotalSettings.innerHTML = smsTotal.toFixed(2);
+  callTotalSettings.innerHTML =  billTypeWithSettingsInstantiate.getTotalCallCost();
+  smsTotalSettings.innerHTML =  billTypeWithSettingsInstantiate.getTotalSmsCost();
 
-  total = callTotal + smsTotal;
-  billTypeWithSettingsColor(total);
-  totalSettings.innerHTML = total.toFixed(2);
 
+
+  totalSettings.innerHTML = billTypeWithSettingsInstantiate.getTotalCost().toFixed(2);
+  billTypeWithSettingsColor();
 
 
 };
 
 function billTypeWithSettingsColor(totalCost) {
 
-  totalSettings.classList.remove('danger');
+  totalSettings.classList.remove('critical');
   totalSettings.classList.remove('warning');
-
-
-  if (totalCost >= critical ) {
-    totalSettings.classList.remove('warning');
-    totalSettings.classList.add('danger');
-  }
-
-  else if (totalCost >= warning &&  totalCost < critical ) {
-    totalSettings.classList.remove('danger');
-    totalSettings.classList.add('warning');
-  }
+  totalSettings.classList.add(billTypeWithSettingsInstantiate.totalClassName());
 
 
 
@@ -105,3 +98,65 @@ function billTypeWithSettingsColor(totalCost) {
 addBtnElem.addEventListener("click", billTypeWithSettings)
 
 updateSettingsElem.addEventListener("click", updateSettings)
+
+
+
+
+
+/*const billItemTypeWithSettings = document.querySelector(".billItemTypeWithSettings");
+const radioBillAddBtn = document.querySelector(".radioBillAddBtn")
+const callTotalSettings = document.querySelector(".callTotalSettings");
+const smsTotalSettings = document.querySelector(".smsTotalSettings");
+const totalSettings = document.querySelector(".totalSettings");
+const callCostSetting = document.querySelector(".callCostSetting");
+const smsCostSetting = document.querySelector(".smsCostSetting");
+const warningLevelSetting = document.querySelector(".warningLevelSetting");
+const criticalLevelSetting = document.querySelector(".criticalLevelSetting");
+const updateSettings = document.querySelector(".updateSettings");
+
+var settingsInstance = BillWithSettings()
+
+function settingValue(){
+
+   settingsInstance.setCallCost(Number(callCostSetting.value));
+   settingsInstance.setSmsCost(Number( smsCostSetting.value ));
+   settingsInstance.setWarningLevel(Number(warningLevelSetting.value));
+   settingsInstance.setCriticalLevel(Number(criticalLevelSetting.value));
+  
+   billTypeWithSettingsColor();
+}
+
+function billTypeWithSettings (){
+  
+   
+  var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+  
+  var billRadio = checkedRadioBtn.value;
+  
+ if (billRadio === 'call'){
+   settingsInstance.makeCall()
+ 
+   }
+  
+  else if (billRadio === 'sms'){
+    settingsInstance.sendSms()
+  }
+  
+  callTotalSettings.innerHTML = settingsInstance.getTotalCallCost().toFixed(2);
+  smsTotalSettings.innerHTML = settingsInstance.getTotalSmsCost().toFixed(2);
+  totalSettings.innerHTML = settingsInstance.getTotalCost().toFixed(2)
+   
+  billTypeWithSettingsColor();
+};
+
+function billTypeWithSettingsColor (){
+  
+  totalSettings.classList.remove('critical');
+  totalSettings.classList.remove('warning');
+  totalSettings.classList.add(settingsInstance.totalClassName());
+
+};
+
+ 
+  radioBillAddBtn.addEventListener("click",billTypeWithSettings)
+   updateSettings.addEventListener("click",settingValue)*/

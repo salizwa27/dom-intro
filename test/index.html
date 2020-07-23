@@ -14,14 +14,19 @@
         mocha.setup('bdd');
         var assert = chai.assert;
     </script>
-    <script src="calculate-bill.js"></script>
-    <script src="calculate-bill-test.js"></script>
-    <script src="text-bill.js"></script>
-    <script src="text-bill-test.js"></script>
-    <script src="radio-bill.js"></script>
-    <script src="radio-bill-test.js"></script>
-    <script src="settings-bill.js"></script>
-    <script src="settings-bill-test.js"></script>
+    <script src="../factory/calculate-bill.js"></script> 
+    <script src="./calculate-bill-test.js"></script> 
+
+    <script src="../factory/text-bill.js"></script>
+    <script src="./text-bill-test.js"></script>
+
+     <script src="../factory/radio-bill.js"></script> 
+    <script src="./radio-bill-test.js"></script> 
+
+    <script src="../factory/settings-bill.js"></script> 
+    <script src="./settings-bill-test.js"></script> 
+
+
     <script src="tests.js" charset="utf-8"></script>
     <script>
         mocha.checkLeaks();

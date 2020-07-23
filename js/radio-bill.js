@@ -11,6 +11,7 @@
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen
 
+
 const billItemTypeRadio = document.querySelector(".billItemTypeRadio");
 const radioBillAddBtn = document.querySelector(".radioBillAddBtn");
 const callTotalTwo = document.querySelector(".callTotalTwo");
@@ -18,49 +19,24 @@ const smsTotalTwo = document.querySelector(".smsTotalTwo");
 const totalTwo = document.querySelector(".totalTwo");
 
 
-var radioBillCallTotal = 0;
-var radioBillSmsTotal = 0;
-var radioBillTotalOne = 0;
+
+var radioBillFact = radioBill();
 
 function radioBillTotal(){
 
 var checkedBtn = document.querySelector("input[name='billItemType']:checked");
 
 var billItemInserted = checkedBtn.value;
+radioBillFact.radioBillTotal(billItemInserted)
 
-   if (billItemInserted === "call"){
-       radioBillCallTotal += 2.75;
-     
-      }
-      else if (billItemInserted === "sms") {
-          radioBillSmsTotal += 0.75;
-      
-}
   
-     callTotalTwo.innerHTML= radioBillCallTotal.toFixed(2);
-     smsTotalTwo.innerHTML= radioBillSmsTotal.toFixed(2);
-   
-    theTotalTwo = radioBillCallTotal + radioBillSmsTotal;
-    totalTwo.innerHTML= theTotalTwo.toFixed(2);
-    radioBillTotalColor(theTotalTwo);
+     callTotalTwo.innerHTML=radioBillFact.getTotalCalls().toFixed(2);
+     smsTotalTwo.innerHTML= radioBillFact.getTotalSms().toFixed(2);
+
+    totalTwo.innerHTML= radioBillFact.getOverallTotal().toFixed(2);
+    totalTwo.classList.add(radioBillFact.totalClassName())
 };
-function radioBillTotalColor(theTotalTwo){
-  
 
-    totalTwo.classList.remove("danger");
 
-    totalTwo.classList.remove("warning");
-
-    if (theTotalTwo >= 50){
-     
-      totalTwo.classList.add("danger");
-
-}
-   else if (theTotalTwo >= 30){
-     
-     totalTwo.classList.add("warning");
-}
-
-};
 
 radioBillAddBtn.addEventListener("click",radioBillTotal)

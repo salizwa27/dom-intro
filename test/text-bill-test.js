@@ -19,7 +19,7 @@ describe("The text bill factory functions", function() {
         textBillFact.textBillTotal('call');
         textBillFact.textBillTotal('call');
         
-        assert.equal(11,  textBillFact.getOverallTotal())
+        assert.equal(11.00,  textBillFact.getOverallTotal())
         
     })
 
@@ -46,8 +46,8 @@ describe("The text bill factory functions", function() {
         
     })
 
-    describe("The Danger & Warning Level for text Bill", function() {
-        it ("should be able to return class name 'danger' when danger level is reached", function() {
+    describe("The critical & Warning Level for text Bill", function() {
+        it ("should be able to return class name 'critical' when danger level is reached", function() {
     
             let textBillFact = textBill();
     
@@ -61,7 +61,7 @@ describe("The text bill factory functions", function() {
             
         })
 
-        it ("should be able to return class name 'warning' when danger level is reached", function() {
+        it ("should be able to return class name 'warning' when warning level is reached", function() {
     
             let textBillFact = textBill();
     

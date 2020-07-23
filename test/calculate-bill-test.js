@@ -4,8 +4,8 @@ describe("The calculate bill factory functions", function() {
 
         let calculateBillFact = calculateBill();
 
-        calculateBillFact.makeCallTwo ();
-
+        calculateBillFact.action('call');
+    
         assert.equal(2.75, calculateBillFact.myOverallTotal())
         
     })
@@ -14,10 +14,10 @@ describe("The calculate bill factory functions", function() {
 
         let calculateBillFact = calculateBill();
 
-        calculateBillFact.makeCallTwo ();
-        calculateBillFact.makeCallTwo ();
-        calculateBillFact.makeCallTwo ();
-        calculateBillFact.makeCallTwo ();
+        calculateBillFact.action('call');
+        calculateBillFact.action('call');
+        calculateBillFact.action('call');
+        calculateBillFact.action('call');
 
         assert.equal(11.00, calculateBillFact.myOverallTotal())
         
@@ -27,9 +27,9 @@ describe("The calculate bill factory functions", function() {
 
         let calculateBillFact = calculateBill();
 
-        calculateBillFact.sendSmsTwo ();
+        calculateBillFact.action('sms');
 
-        assert.equal(0.85, calculateBillFact.myOverallTotal())
+        assert.equal(0.75, calculateBillFact.myOverallTotal())
         
     })
 
@@ -37,12 +37,12 @@ describe("The calculate bill factory functions", function() {
 
         let calculateBillFact = calculateBill();
 
-        calculateBillFact.sendSmsTwo ();
-        calculateBillFact.sendSmsTwo ();
-        calculateBillFact.sendSmsTwo ();
-        calculateBillFact.sendSmsTwo ();
+        calculateBillFact.action('sms');
+        calculateBillFact.action('sms');
+        calculateBillFact.action('sms');
+        calculateBillFact.action('sms');
 
-        assert.equal(3.40, calculateBillFact.myOverallTotal())
+        assert.equal(3.00, calculateBillFact.myOverallTotal())
         
     })
 
@@ -50,11 +50,11 @@ describe("The calculate bill factory functions", function() {
 
         let calculateBillFact = calculateBill();
 
-        calculateBillFact.makeCallTwo ();
-        calculateBillFact.makeCallTwo ();
-        calculateBillFact.sendSmsTwo ();
+        calculateBillFact.action('call');
+        calculateBillFact.action('call');
+        calculateBillFact.action('sms');
 
-        assert.equal(6.35, calculateBillFact.myOverallTotal())
+        assert.equal(6.25, calculateBillFact.myOverallTotal())
         
     })
 
@@ -63,12 +63,32 @@ describe("The calculate bill factory functions", function() {
     
             let calculateBillFact = calculateBill();
     
-            calculateBillFact.callMade();
-            calculateBillFact.callMade();
-            calculateBillFact.callMade();
-            calculateBillFact.callMade();
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
     
-            assert.equal(0.00, calculateBillFact.myOverallTotal())
+            assert.equal(66.00, calculateBillFact.myOverallTotal())
             assert.equal("critical", calculateBillFact.totalShowClassName())
             
         })
@@ -76,13 +96,23 @@ describe("The calculate bill factory functions", function() {
         it ("should be able to return class name 'warning' when warning level is reached", function() {
     
             let calculateBillFact = calculateBill();
+
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
+            calculateBillFact.action('call');
     
-            calculateBillFact.callMade();
-            calculateBillFact.callMade();
-            calculateBillFact.callMade();
-            calculateBillFact.callMade();
-    
-            assert.equal(0.00, calculateBillFact.myOverallTotal())
+            
+            assert.equal(35.75, calculateBillFact.myOverallTotal())
             assert.equal("warning", calculateBillFact.totalShowClassNameTwo())
             
         })

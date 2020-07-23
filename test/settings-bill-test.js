@@ -81,8 +81,9 @@ describe("The bill with settings factory functions", function() {
         settingsBill.makeCall();
         settingsBill.makeCall();
         settingsBill.makeCall();
+        settingsBill.makeCall();
 
-        assert.equal(6.75, settingsBill.getTotalCost());
+        assert.equal(9.00, settingsBill.getTotalCost());
         assert.equal(2.25, settingsBill.getCallCost());
         assert.equal(0.85, settingsBill.getSmsCost());
 
@@ -155,7 +156,7 @@ describe("The bill with settings factory functions", function() {
         settingsBill.makeCall();
         settingsBill.makeCall();
         
-        assert.equal("critical", settingsBill.totalClassName());
+        assert.equal("warning", settingsBill.totalClassName());
     
     })
 

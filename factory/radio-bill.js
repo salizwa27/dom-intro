@@ -1,50 +1,42 @@
 function radioBill() {
 
-    var totalCalls = 0;
-    var totalSms = 0;
+    var callCost = 0;
+    var smsCost = 0;
     var totalCost = 0;
 
   function radioBillTotal(billItemType) {
 
     if (billItemType === "call"){
-        totalCalls += 2.75;
+        callCost += 2.75;
     }
 
     else if (billItemType === "sms"){
-        totalSms += 0.85;
+        smsCost += 0.85;
     }
   }
 
   function getTotalCalls(){
-      return totalCalls;
+      return callCost;
 
   }
 
   function getTotalSms(){
-      return totalSms;
+      return smsCost;
   }
 
   function getOverallTotal(){
-      return totalCost = totalCalls + totalSms   
+      return totalCost = callCost + smsCost   
 
   }
-   
-  function getCriticalLevel() {
-      return 10;
-  }
-
-  function getWarningLevel() {
-    return 5;
-}
 
   function totalClassName(){
 
-    if (getOverallTotal() >= getCriticalLevel()) {
+    if (getOverallTotal() >= 10) {
         return "critical"
     }
 
-    if (getOverallTotal() >= getWarningLevel()) {
-        return "warning"
+    if (getOverallTotal() >= 5) {
+        return "warning";
     }
 }
 

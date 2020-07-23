@@ -18,55 +18,52 @@ const billTotalElement = document.querySelector(".billTotal");
 const billStringTotalElement = document.querySelector(".billString");
 const billTotalSpanElement = document.querySelector(".total");
 
-   function totalPhoneBill(billString) {
+var calculateBillInstantiate = calculateBill()
 
-  
+/*function totalPhoneBill(billString) {
+
+
   var billList = billString.split(",");
   var billTotal = 0;
 
-  
-  for(var i=0;i<billList.length;i++){
-   
-var billCost = billList[i].trim();
-  if (billCost === "call"){
+
+  for (var i = 0; i < billList.length; i++) {
+
+    var billCost = billList[i].trim();
+    if (billCost === "call") {
       billTotal += 2.75;
-}
- else if (billCost === "sms") {
+    }
+
+    else if (billCost === "sms") {
       billTotal += 0.75;
-}
-} 
- var roundedTotal = billTotal.toFixed(2);
-   return roundedTotal;
-  };
-  
-      
-     
-function phoneBillColor(roundedTotal){
+    }
+  }
+  var roundedTotal = billTotal.toFixed(2);
+  return roundedTotal;
+};*/
+
+
+
+function phoneBillColor(roundedTotal) {
 
   const theTotal = Number(roundedTotal);
 
   billTotalSpanElement.classList.remove("warning");
-  billTotalSpanElement.classList.remove("danger");
-
-  if (theTotal >= 20 && theTotal < 30){
-    billTotalSpanElement.classList.add("warning");
-}
+  billTotalSpanElement.classList.remove("critical");
+alert(calculateBillInstantiate.totalShowClassName())
+  billTotalSpanElement.classList.add(calculateBillInstantiate.totalShowClassName());
 
 
-  else if (theTotal >= 30){
-      billTotalSpanElement.classList.add("danger");
-}
+};
 
-}; 
-    
 
 function calculateBtnClicked() {
-var billString = billStringTotalElement.value;
+  var billString = billStringTotalElement.value;
 
-  const roundedTotal = totalPhoneBill(billString);
-
-    billTotalElement.innerHTML= roundedTotal;
-    phoneBillColor(roundedTotal);
+  const roundedTotal = calculateBillInstantiate.action(billString);
+  //alert(roundedTotal)
+  billTotalElement.innerHTML = roundedTotal;
+  phoneBillColor(roundedTotal);
 
   billTotalElement.innerHTML = roundedTotal;
 };
