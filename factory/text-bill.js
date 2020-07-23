@@ -33,11 +33,11 @@ function textBill (){
     }
      
     function getCriticalLevel() {
-        return 10;
+        return 50;
     }
   
     function getWarningLevel() {
-      return 5;
+      return 30;
   }
   
     function totalClassName(){

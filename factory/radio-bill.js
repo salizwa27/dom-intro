@@ -31,11 +31,11 @@ function radioBill() {
 
   function totalClassName(){
 
-    if (getOverallTotal() >= 10) {
+    if (getOverallTotal() >= 50) {
         return "critical"
     }
 
-    if (getOverallTotal() >= 5) {
+    if (getOverallTotal() >= 30) {
         return "warning";
     }
 }
